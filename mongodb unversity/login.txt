@@ -1,0 +1,13 @@
+m001-student
+
+m001-mongodb-basics
+
+mongo "mongodb+srv://m001-student:m001-mongodb-basics@sandox.sygrn.mongodb.net/admin"
+mongo "mongodb+srv://sandox.sygrn.mongodb.net/myFirstDatabase" --username m001-student
+
+db.zips.find({"$nor":[{"pop":{"lt":5000}},{"pop":{"gt":1000000}}]}).count()
+
+db.zips.find({$nor:[{$or:[{"pop":{"$lt" : 5000}}, {"pop":{"$gt" : 1000000}}]}]}).count()
+
+{$or:[  {{"founded_year":2014},{$or:[{"category_code":"web"},{"category_code":"social"} ]}, {"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"} ]}  }  ]   }
+
