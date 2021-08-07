@@ -11,3 +11,13 @@ db.zips.find({$nor:[{$or:[{"pop":{"$lt" : 5000}}, {"pop":{"$gt" : 1000000}}]}]})
 
 {$or:[  {{"founded_year":2014},{$or:[{"category_code":"web"},{"category_code":"social"} ]}, {"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"} ]}  }  ]   }
 
+{$or:[  {$and:[{"founded_year":2014},{$or:[{"category_code":"web"},{"category_code":"social"} ]}]}, {$and:[{"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"} ]} ] }  ]   }
+
+db.companies.find({ "$expr": { "$eq": [ "$permalink", "$twitter_username"] }}).count()
+db.companies.find({"offices":{"$elemMatch" : {"city" : "Seattle"}} }).count()
+
+db.trips.find({ "start station location.coordinates.0": { "$lt": -74 }}).count()
+
+db.listingsAndReviews.find({},{"room_type":1,"_id": 0}).count()
+
+db.trips.find().sort({"birth year":1}).limit(1)
